@@ -1,21 +1,4 @@
-var app = require('http').createServer(handler)
-var io = require('socket.io')(app);
-var fs = require('fs');
-
-app.listen(8080);
-
-function handler (req, res) {
-  fs.readFile(__dirname + '/bonjour.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Erreur chargement bonjour.html');
-    }
-
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+var io = require('socket.io')(8080);
 
 var clientId=1;
 var tClient=Array();
