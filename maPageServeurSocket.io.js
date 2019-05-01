@@ -6,16 +6,16 @@ io.on('connection', function (socket) {
 	socket.emit('bienvenue', { message: 'Bienvenue' });
 
 	//definition de l'evenement de demande de connexion (qui contiendra le nom de l'utilisateur)
-	socket.on('demanderConnexion',function(data){
+	socket.on('demanderConnexion',function(messageRecu){
 		
 		//on stocke les noms des utilisateurs avec leur identifiant de socket
-		tableauDesNoms[socket.id]=data.nom;
+		tableauDesNoms[socket.id]=messageRecu.nom;
 
 		//on envoi un evenement a l'utilisateur pour demarrer l'application
-		socket.emit('demarrerMessagerie',{nom:data.nom});
+		socket.emit('demarrerMessagerie',{nom:messageRecu.nom});
 		
 		//message pour indiquer un nouvel arrivant
-		var messageAenvoyer={message: data.nom+' vient de se connecter',auteur:'Serveur'};
+		var messageAenvoyer={message: messageRecu.nom+' vient de se connecter',auteur:'Serveur'};
 		
 		//envoi du message aux autres internautes
 		socket.broadcast.emit('message',messageAenvoyer);
