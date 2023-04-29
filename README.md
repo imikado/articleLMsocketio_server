@@ -1,2 +1,4 @@
-# articleLMsocketio_server
-article linux Magazine sur socket.io partie serveur
+# Projet source pour Linux Magazine 230
+## Article: Introduction à socket.io.
+
+Partie serveur
